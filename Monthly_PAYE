@@ -1,0 +1,51 @@
+n = int(input("Gross Salary: "))
+a = int(input("NSSF/Pension Contribution: "))
+taxable_pay = n - a
+print("Taxable Pay = ", taxable_pay)
+def nhif(n):
+    if n<= 5999:
+        return 150
+    elif n<= 7999:
+        return 300
+    elif n<= 11999:
+        return 400
+    elif n<= 14999:
+        return 500
+    elif n<= 19999:
+        return 600
+    elif n<= 24999:
+        return 750
+    elif n<= 29999:
+        return 850
+    elif n<= 34999:
+        return 900
+    elif n<= 44999:
+        return 1000
+    elif n<= 49999:
+        return 1100
+    elif n<= 59999:
+        return 1200
+    elif n<= 69999:
+        return 1300
+    elif n<= 79999:
+        return 1400
+    elif n<= 89999:
+        return 1500
+    elif n<= 99999:
+        return 1600
+    else:
+        return 1700
+   
+x = taxable_pay
+relief = 2400
+def paye(x):
+    if x <= 24000:
+        return x*0.10
+    elif x <= 32333:
+        return (x-24000)*.25+ 24000*0.10
+    elif x > 32333:
+        return 24000*0.10 + 8333*0.25 + (x-32333)*0.30
+if paye(x) - relief - nhif(n)*0.15 <= 0:
+    print("Net PAYE:", 0)
+else:
+    print("Net PAYE:", (paye(x)-relief-nhif(n)*0.15))
